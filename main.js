@@ -45,14 +45,23 @@ Create two computers object from your factory function and save them in one arra
 Note: please write one or two lines here describing your solution.
 */
 
+//it's a factory function that return a computer object every time is called
 function makeComputer(type, color, weight) {
   // TODO: Your code here
+  return {
+    type: type,
+    color: color,
+    weight: weight
+  }
 }
+// array variable that holds 2 computer objects
+var computers = [makeComputer("gaming", "blue", 2.25), makeComputer("laptop", "red", 1.9)];
 
 // Write a function displayComputer that can be used to display one computer.
-
+//it accept an array of computers and return 1 computer
 function displayComputer(computer) {
   // TODO: Your code here
+  return computer[0];
 }
 
 //=============================================================================
@@ -72,8 +81,13 @@ var strArr = ['hello', 'world', 'whirled', 'peas'];
 uppercaseAll(strArr); ==> [ 'HELLO', 'WORLD', 'WHIRLED', 'PEAS' ]
 */
 
+//we used each to iterating the array and we created a function to upper case the strings
 function uppercaseAll(arrayOfStrings) {
   // TODO: your code here
+  each(arrayOfStrings, function(element, i){
+    arrayOfStrings[i] = element.toUpperCase();
+  });
+  return arrayOfStrings;
 }
 
 //=============================================================================
@@ -111,8 +125,22 @@ var data = [
   }
 ];
 
+//it invokes each and pass an array to iterate it and a function that checks if population 
+//is lower than 500 million then it will delte the object
+// and when we finish we will return our arrayOfObjects
 function highestPopulation(arrayOfObjects) {
   // TODO: your code here
+  // return map(arrayOfObjects, function(element){
+  //   if(element['population'] > 500000000){
+  //     return element;
+  //   }
+  // });
+  each(arrayOfObjects, function(object, i){
+    if(object["population"] < 500000001){
+      delete arrayOfObjects[i];
+    }
+  })
+  return arrayOfObjects;
 }
 
 //=============================================================================
@@ -131,8 +159,14 @@ halveAll(numsArray); ==> [ 1, 3, 10, 4, 7 ]
 Note: please write one or two lines here describing your solution.
 */
 
+//it call each and pass the array to iterart it and the function to devide
+//every number by 2
 function halveAll(numbers) {
   // your code is here
+  each(numbers, function(number, i){
+    numbers[i] = number / 2;
+  });
+  return numbers;
 }
 
 //=============================================================================
@@ -147,8 +181,13 @@ values({first : 5, second: 'something' , third : 129}) ==> [5, 'something', 129]
 
 Note: please write one or two lines here describing your solution.
 */
+
+//it calls map to return an array of the object values
 function values(obj) {
   // TODO: your code here
+  return map(obj, function(element){
+    return element;
+  });
 }
 
 //Good Luck :))
